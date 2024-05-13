@@ -1,0 +1,28 @@
+.navbar {
+    width: 100%;
+    height: 70px;
+    background-color: #3bb19b;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: space-between;
+}
+
+.navbar h2 {
+    color: black;
+    font-size: 25px;
+    margin-left: auto; /* Auto margin to push it to the center */
+    margin-right: auto; /* Auto margin to push it to the center */
+}
+
+.white_btn {
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    background-color: white;
+    border-radius: 20px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 20px;
+}
