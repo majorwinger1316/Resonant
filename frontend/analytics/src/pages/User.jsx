@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import '../styles/UserSettings.css';
@@ -9,7 +9,23 @@ function User() {
         Employee: '',
         Place: '',
     });
+    const [employees, setEmployees] = useState([]);
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        // Fetch employee names when the component mounts
+        fetchEmployees();
+    }, []);
+
+    const fetchEmployees = async () => {
+        try {
+            const url = 'http://localhost:8080/api/getemployee'; // Replace this URL with your actual API endpoint
+            const response = await axios.get(url);
+            setEmployees(response.data); // Assuming the response data is an array of employee names
+        } catch (error) {
+            console.error('Error fetching employees:', error);
+        }
+    };
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
@@ -23,13 +39,8 @@ function User() {
             alert('Data Submitted');
             console.log(res.message);
         } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
-            }
+            console.error('Error submitting data:', error);
+            alert('Machine already exists')
         }
     };
 
@@ -42,7 +53,7 @@ function User() {
                     <div className="addmac">
                         <label>Machine Number: </label>
                         <input
-                            type="number"
+                            type="integer"
                             name="Machinenumber"
                             onChange={handleChange}
                             value={data.Machinenumber}
@@ -51,13 +62,20 @@ function User() {
                     </div>
                     <div className="addemployee">
                         <label>Employee name: </label>
-                        <input
-                            type="text"
+                        <select
                             name="Employee"
                             onChange={handleChange}
                             value={data.Employee}
+                            size={1} // Display 5 items with scrollbar
                             required
-                        />
+                            className="scrollable-select" 
+                        >
+                            {employees.map((employee, index) => (
+                                <option key={index} value={employee}>
+                                    {employee}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="addplace">
                         <label>Place: </label>

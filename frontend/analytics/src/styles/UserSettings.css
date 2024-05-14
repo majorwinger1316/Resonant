@@ -38,11 +38,18 @@
 }
 
 .addmac input,
-.addemployee input,
 .addplace input {
     width: 300px;
     background-color: white;
     color: #333;
+}
+
+.addemployee select{
+    width: 300px;
+    margin-left: 40px;
+    background-color: white;
+    color: #333;/* Set desired height for the select box */
+    overflow-y: auto; 
 }
 
 .addmac input {
