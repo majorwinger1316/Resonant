@@ -17,7 +17,7 @@ function Sidebar() {
   return (
     <div className='sidebar'>
       <div className='up_side'>
-          <h2>Access Bar</h2>
+          <h2>Admin Access Bar</h2>
       </div>
       <div className='down_side'>
         <Link to="/AdminDashboard" className="sidebar-link">

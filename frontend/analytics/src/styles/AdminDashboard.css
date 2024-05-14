@@ -1,0 +1,35 @@
+.admin {
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .admin h1 {
+    font-size: 30px;
+    align-items: center;
+
+    color: #333; /* Adjust the color as needed */
+    margin-left: 300px; /* Adjust the margin as needed */
+  }
+
+  .box {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin: 10px;
+    width: 400px;
+    height: 180px;
+    width: calc(33.33% - 20px);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @media screen and (max-width: 768px) {
+    .box {
+        width: calc(50% - 20px); /* Adjust the width for smaller screens */
+    }
+}

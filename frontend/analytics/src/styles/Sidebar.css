@@ -14,6 +14,7 @@
   .up_side {
     margin-bottom: 20px;
   }
+
   
   .down_side {
     display: flex; /* Use flexbox for better layout */
@@ -46,6 +47,11 @@
     color: #333;
   }
   
+.sidebar button:hover{
+  background-color: #333;
+  color: white;
+}
+
   .sidebar-icon {
     margin-right: 8px; /* Add space between icon and text */
   }
