@@ -5,37 +5,36 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
-
     const [data, setData] = useState({
-		name: "",
-		role: "",
-		email: "",
-		password: "",
-	});
-	const [error, setError] = useState("");
-	const navigate = useNavigate();
+        name: "",
+        role: "employee", // Set role to "employee" by default
+        email: "",
+        password: "",
+    });
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
+    const handleChange = ({ currentTarget: input }) => {
+        setData({ ...data, [input.name]: input.value });
+    };
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			const url = "http://localhost:8080/api/users";
-			const { data: res } = await axios.post(url, data);
-			navigate("/login");
-			console.log(res.message);
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
-			}
-		}
-	};
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const url = "http://localhost:8080/api/users";
+            const { data: res } = await axios.post(url, data);
+            navigate("/login");
+            console.log(res.message);
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(error.response.data.message);
+            }
+        }
+    };
 
     return (
         <div style={{ 
@@ -74,21 +73,7 @@ function Register() {
                                         placeholder="Your Name"
                                         onChange={handleChange}
                                         value={data.name}
-                                        required
-                                    />
-                                </Form.Group>
-                            </div>
-                            <div style={{ padding: '10px', width: '35vh' }}>
-                                    <div style={{fontFamily: "'Courier New', Courier, monospace", fontSize: "15px"}}>
-                                    <span>Role</span>
-                                    </div>
-                                    <Form.Group controlId="formUserID">
-                                    <Form.Control
-                                        type="text"
-                                        name='role'
-                                        placeholder="ex: admin"
-                                        onChange={handleChange}
-                                        value={data.role}
+                                        autoComplete="off"
                                         required
                                     />
                                 </Form.Group>
@@ -104,6 +89,7 @@ function Register() {
                                         placeholder="example@example.com"
                                         onChange={handleChange}
                                         value={data.email}
+                                        autoComplete="off"
                                         required
                                     />
                                 </Form.Group>
@@ -137,4 +123,4 @@ function Register() {
     );
 }
 
-export default Register
+export default Register;

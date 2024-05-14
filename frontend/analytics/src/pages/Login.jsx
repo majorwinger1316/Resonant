@@ -78,6 +78,7 @@ function Login() {
                     placeholder="Email"
                     onChange={handleChange}
                     value={data.email}
+                    autoComplete="off"
                     required
                   />
                 </Form.Group>
@@ -101,7 +102,7 @@ function Login() {
                 <Button type='submit' variant="primary" style={{ width: '100%', maxWidth: '200px' }}>Login</Button>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', width: '35vh', fontSize: '13px', color: 'grey' }}>
-                <Link to="/register" style={{ color: 'grey', fontFamily: "'Courier New', Courier, monospace" }}>Click here to register</Link>
+                <Link to="/register" style={{ color: 'grey', fontFamily: "'Courier New', Courier, monospace" }}>Click here to register(employee)</Link>
               </div>
             </Form>
           </Col>
