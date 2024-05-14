@@ -21,11 +21,13 @@ function Login() {
       const url = "http://localhost:8080/api/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
+      const employeeName = res.name; // Extract name from response data
       alert("Logged in successfully");
       if (res.role === "admin") {
         window.location = "/AdminDashboard";
-      } else if (res.role === "employee") { // Check for employee role
-        window.location = "/EmployeeDashboard"; // Redirect to EmployeeDashboard
+      } else if (res.role === "employee") {
+        // Redirect to EmployeeDashboard with name in URL query parameters
+        window.location = `/EmployeeDashboard?name=${employeeName}`;
       } else {
         window.location = "/";
       }
