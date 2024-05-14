@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/Dashboard.css"
+import Sidebar from '../components/Sidebar';
 
 function Dashboard() {
 	const handleLogout = () => {
@@ -9,6 +10,7 @@ function Dashboard() {
 
 	return (
 		<div className="main_container">
+			<Sidebar/>
 			<nav className="navbar">
 				<h2>Dashboard</h2>
 				<button className="white_btn" onClick={handleLogout}>
